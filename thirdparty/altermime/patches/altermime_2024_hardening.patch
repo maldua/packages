@@ -1,0 +1,21 @@
+diff -urN zimbra-altermime-orig/MIME_headers.c zimbra-altermime/MIME_headers.c
+--- zimbra-altermime-orig/MIME_headers.c	2024-02-03 19:10:25.020118283 +0000
++++ zimbra-altermime/MIME_headers.c	2024-02-03 19:14:14.252389200 +0000
+@@ -2133,7 +2133,7 @@
+ 						}
+ 
+ 						if ( hinfo->filename[0] == '\0' ) {
+-							snprintf( hinfo->filename, sizeof(hinfo->filename), "%s", hinfo->name );
++							snprintf( hinfo->filename, sizeof(hinfo->filename), "%.*s", _MIMEH_FILENAMELEN_MAX , hinfo->name );
+ 						}
+ 					} /* If the file name doesn't already exist in the stack */
+ 
+@@ -2499,7 +2499,7 @@
+ 
+ 			if ( hinfo->filename[0] == '\0' ) 
+ 			{
+-				snprintf( hinfo->filename, sizeof(hinfo->filename), "%s", hinfo->name );
++				snprintf( hinfo->filename, sizeof(hinfo->filename), "%.*s", _MIMEH_FILENAMELEN_MAX , hinfo->name );
+ 			}
+ 
+ 			// Handle situations where we'll need the filename for the future.
